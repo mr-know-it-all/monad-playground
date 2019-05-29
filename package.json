@@ -13,7 +13,7 @@
     "test": "find ./tests -name '*-test.js' | xargs mocha -R spec"
   },
   "devDependencies": {
-    "mocha": "^3.5.0"
+    "mocha": "^6.1.4"
   },
   "standard": {
     "globals": [
