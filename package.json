@@ -1,0 +1,33 @@
+{
+  "name": "monad-playground",
+  "version": "0.0.1",
+  "description": "A place for learning monads in JavaScript",
+  "main": "index.js",
+  "author": "mr-know-it-all",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mr-know-it-all/monad-playground.git"
+  },
+  "scripts": {
+    "test": "find ./tests -name '*-test.js' | xargs mocha -R spec"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  },
+  "standard": {
+    "globals": [
+      "_",
+      "describe",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/mr-know-it-all/monad-playground/issues"
+  },
+  "homepage": "https://github.com/mr-know-it-all/monad-playground#readme"
+}
