@@ -41,24 +41,41 @@ const onSuccess = res => ['success', res];
 
 const doAction = e => Either(onError, onSuccess, e);
 
-describe('Either Monad', () => {
+xdescribe('Either Monad laws', () => {})
+
+describe('Either Monad test', () => {
   it('test user with invalid id', () => {
-    assert.deepEqual(['error', ['invalid user id']], doAction(invalidUserId));
+    assert.deepEqual(
+      ['error', ['invalid user id']],
+      doAction(invalidUserId)
+    );
   })
 
   it('test user with invalid name', () => {
-    assert.deepEqual(['error', ['invalid user name']], doAction(invalidUserName));
+    assert.deepEqual(
+      ['error', ['invalid user name']],
+      doAction(invalidUserName)
+    );
   })
 
   it('test user with invalid age', () => {
-    assert.deepEqual(['error', ['invalid user age']], doAction(invalidUserAge));
+    assert.deepEqual(
+      ['error', ['invalid user age']],
+      doAction(invalidUserAge)
+    );
   })
 
   it('test user with valid user', () => {
-    assert.deepEqual(['success', { age: 42, id: 1, name: 'a' }], doAction(validUser));
+    assert.deepEqual(
+      ['success', { age: 42, id: 1, name: 'a' }],
+      doAction(validUser)
+    );
   })
 
-  it('test either monad apply function', () => {
-    assert.deepEqual(['success', 42], doAction(right(2).apply(right(x => x + 40))));
+  it('test apply function', () => {
+    assert.deepEqual(
+      ['success', 42],
+      doAction(right(2).apply(right(x => x + 40)))
+    );
   })
 });
