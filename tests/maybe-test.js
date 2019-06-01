@@ -25,7 +25,7 @@ describe('Maybe Monad laws', () => {
       just(x).toString()
     );
     assert.equal(
-      none(x).bind(Just.of).toString(),
+      none(x).bind(None.of).toString(),
       none(x).toString()
     );
   });

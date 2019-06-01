@@ -14,7 +14,7 @@ class Left {
   bind(fn) { return this; }
   apply() { return this; }
   static of(val) { return new Left(val); }
-  toString() { return `Left(${val})`; }
+  toString() { return `Left(${this.__val})`; }
   getValue() { return this.__val; }
 }
 
@@ -24,4 +24,4 @@ const Either = (leftFunc, rightFunc, e) => (
   (e instanceof Left) ? leftFunc(e.__val) : rightFunc(e.__val)
 )
 
-module.exports = { right, left, Either };
+module.exports = { right, Right, left, Left, Either };

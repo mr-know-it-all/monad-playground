@@ -3,7 +3,7 @@ const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);
 
 class IO {
   constructor(fn) { this.__val = fn; }
-  run() { return this.__val(); }
+  run() { return typeof this.__val === 'function' ? this.__val() : this.__val; }
   map(fn) { return new IO(compose(fn, this.__val)); }
   bind(fn) { return compose(fn, this.__val)(); }
   apply(otherIO) { return otherIO.map(this.__val); }

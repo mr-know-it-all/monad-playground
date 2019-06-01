@@ -1,7 +1,46 @@
-const { right, left, Either } = require('../src/either.js');
+const { right, Right, left, Left, Either } = require('../src/either.js');
 const assert = require('assert');
 
-xdescribe('Either Monad laws', () => {})
+describe('Either Monad laws', () => {
+  const f = n => right(n * 2);
+  const g = n => right(n + 1);
+  const fleft = n => left(n);
+  const gleft = n => left(n);
+  const x = 42
+
+  it('test left identity', () => {
+    assert.equal(
+      right(x).bind(f).toString(),
+      f(x).toString()
+    );
+    assert.equal(
+      left(x).bind(fleft).toString(),
+      fleft(x).toString()
+    );
+  });
+
+  it('test right identity', () => {
+    assert.equal(
+      right(x).bind(Right.of).toString(),
+      right(x).toString()
+    );
+    assert.equal(
+      left(x).bind(Left.of).toString(),
+      left(x).toString()
+    );
+  });
+
+  it('test associativity', () => {
+    assert.equal(
+      right(x).bind(f).bind(g).toString(),
+      right(x).bind(x => f(x).bind(g)).toString()
+    );
+    assert.equal(
+      left(x).bind(fleft).bind(gleft).toString(),
+      left(x).bind(x => fleft(x).bind(gleft)).toString()
+    );
+  });
+});
 
 describe('Either Monad test', () => {
   const getUserId = ({ id = null}) => id;
